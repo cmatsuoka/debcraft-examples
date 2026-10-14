@@ -5,7 +5,7 @@ description: |
   The bvi is a display-oriented editor for binary files, based on the vi
   text editor. If you are familiar with vi, just start the editor and begin to
   edit! If you never heard about vi, maybe bvi is not the best choice for you.
-base: ubuntu@24.04
+base: ubuntu@26.10
 maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 original-maintainer: Étienne Mollier <emollier@debian.org>
 section: universe/editors
@@ -34,6 +34,5 @@ parts:
     organize:
       (build)/README: usr/share/doc/bvi/
       (build)/CREDITS: usr/share/doc/bvi/
-      (build)/bvi/*.1: usr/share/man/man1/
       (build)/debian/menu: usr/share/menu/bvi
 

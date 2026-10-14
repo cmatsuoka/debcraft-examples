@@ -118,10 +118,6 @@ parts:
     plugin: autotools
     autotools-configure-parameters:
       - prefix=/usr
-      #- $(dpkg-buildflags --export cmdline)
-      - CFLAGS="$(dpkg-buildflags --get CFLAGS)"
-      - CPPFLAGS="$(dpkg-buildflags --get CPPFLAGS)"
-      - LDFLAGS="$(dpkg-buildflags --get LDFLAGS)"
       - --with-openssl
       - --disable-dependency-tracking
       - --disable-symbol-hiding
@@ -136,7 +132,6 @@ parts:
     source-tag: applied/$CRAFT_PROJECT_VERSION
     build-packages:
       - ca-certificates
-      - dh-exec
       - groff-base
       - libbrotli-dev
       - libgnutls28-dev
@@ -167,5 +162,9 @@ parts:
       usr/share/man/man1/curl-config*: (package/libcurl4-openssl-dev)/usr/share/man/man1/
 
       usr/share/man/man3: (package/libcurl4-doc)/usr/share/man/man3
+
+    prime:
+      # Do not ship libtool .la files, debcraft doesn't handle this automatically yet.
+      - -(package/libcurl4-openssl-dev)/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/*.la
 
     # TODO: make check

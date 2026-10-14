@@ -14,6 +14,7 @@ section: libs
 
 packages:
   libpng16-16t64:
+    multi-arch: same
     provides:
       - libpng16-16
     breaks:
@@ -30,6 +31,7 @@ packages:
 
       This package contains the header and development files needed to build
       programs and packages using libpng.
+    multi-arch: same
     depends:
       - libpng16-16t64 (= $CRAFT_PROJECT_VERSION)
     conflicts:
@@ -94,7 +96,6 @@ parts:
       usr/lib/pkgconfig: (package/libpng-dev)/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/pkgconfig
       usr/lib/*.a: (package/libpng-dev)/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/
       usr/lib/*.so: (package/libpng-dev)/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/
-      usr/share/doc/libpng-16: (package/libpng-dev)/usr/share/doc/libpng-dev
       usr/share/man: (package/libpng-dev)/usr/share/man
       (build)/debian/*.1: (package/libpng-dev)/usr/share/man/man1/
 
