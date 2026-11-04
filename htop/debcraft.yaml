@@ -33,10 +33,6 @@ parts:
       - libncurses-dev
       - libsensors-dev
       - pkg-config
-    override-build: |
-      craftctl default
-      strip --remove-section=.comment --remove-section=.note \
-        $CRAFT_PART_INSTALL/usr/bin/htop
     organize:
       (build)/README.md: usr/share/doc/htop/
       (build)/NEWS: usr/share/doc/htop/
@@ -46,8 +42,6 @@ parts:
   distro-files:
     plugin: dump
     source: debian
-    override-build: |
-      gzip -9nf changelog
     organize:
-      (build)/changelog.gz: usr/share/doc/htop/changelog.Debian.gz
+      (build)/changelog.Debian: usr/share/doc/htop/
       (build)/copyright: usr/share/doc/htop/
